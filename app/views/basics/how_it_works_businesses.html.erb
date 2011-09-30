@@ -1,0 +1,43 @@
+<div class="content-header">
+	<img class="page-header" src="/images/how-it-works-title.jpg"/>
+	<div class="how-it-works-nav">
+		
+		<%= link_to	'', :how_it_works_consumers, :class => "consumers" %>
+		<a class="businesses business-active"></a>
+	</div>
+</div>
+<div class="hiw-content">
+	<div class="hiw-business-main">
+		<h2><%= @content.main_header %></h2>
+		<span><%= @content.main_content %></span>
+	</div>
+	<%= link_to '', :for_businesses, :id => "hiw-biz-signup-link" %>
+	<img id="hiw-business-graphic" src="/images/hiw-business-graphic.jpg"/>
+	<div class="hiw-business-text">
+		<h2><%= @content.subheader_1 %></h2>
+		<span><%= @content.subcontent_1.html_safe %></span>
+	</div>
+	<div class="hiw-business-text">
+		<h2><%= @content.subheader_2 %></h2>
+		<span><%= @content.subcontent_2.html_safe %></span>
+	</div>
+	<div class="hiw-business-text">
+		<h2><%= @content.subheader_3 %></h2>
+		<span><%= @content.subcontent_3.html_safe %></span>
+	</div>
+	<div class="hiw-business-text">
+		<h2><%= @content.subheader_4 %></h2>
+		<span><%= @content.subcontent_4.html_safe %></span>
+	</div>
+	<div class="hiw-business-text">
+		<h2><%= @content.subheader_5 %></h2>
+		<span><%= @content.subcontent_5.html_safe %></span>
+	</div>
+	<div class="hiw-business-text">
+		<h2><%= @content.subheader_6 %></h2>
+		<span><%= @content.subcontent_6.html_safe %></span>
+	</div>
+</div>
+
+<!-- admin Stuffs -->
+<%= render :partial => 'basics/edit_admin_stuff' %>

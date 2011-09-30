@@ -1,0 +1,32 @@
+<div class="edit-page">
+	<div class="topper"></div>
+	<div class="main-content">
+		<h2>Quotes</h2>
+		<% if @quotes.empty? %>
+			<p class="full-width-text">No quotes currently exist. Please create one here.</p>
+		<% else %>
+			<% @quotes.each do |f| %>
+			<div class="indiv-quote-preview">
+				<div class="full-width-clearer">
+					<div class="majority-width">
+						<p class="quote-text">"<%= f.words_of_wisdom %>"</p>
+						<p class="quote-author"> - <%= f.author %></p>	
+					</div>
+					<div class="minor-width">
+						<% if f.active? %>
+							<%= link_to "Active!", edit_quote_path(f.id) %>
+						<% else %>
+						  <%= link_to "Disabled", edit_quote_path(f.id) %>
+						<% end %>	
+					</div>
+				</div>
+				<%= link_to "Edit", edit_quote_path(f.id) %> 
+				<%= link_to "Delete", { :action => "destroy", :id => f.id }, :confirm => 'Are you sure?', :method => :delete %>
+			</div>	
+			<% end %>
+		<% end %>
+
+		<%= link_to "New Quote", new_quote_path %>
+	</div>
+	<div class="bottom"></div>
+</div>

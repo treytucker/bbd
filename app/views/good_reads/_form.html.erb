@@ -1,0 +1,23 @@
+<%= form_for @post do |f| %>
+   	<div class="full-width-clearer">
+   		<%= f.label :title, "Title" %>
+	   	<%= f.text_field :title %>
+   	</div>
+
+	<div class="full-width-clearer">
+		<%= f.label :post, "Post" %>
+	   	<%= f.text_area :post, :class => "mceEditor" %>	
+	</div>
+   	
+  	<div class="full-width-clearer">
+		<%= f.label :category, "Category" %>   
+		<%= collection_select(:good_read, :category_id, Category.all, :id, :name, :prompt => true, :selected => params[:name]) %>
+  	</div>
+      
+	<div class="full-width-clearer">
+		<a href="http://bbd-images.bigblockdeals.com/image-manager" target="blank">Manage Images</a>
+	</div>
+
+<%= f.submit "Update", :disable_with => 'Updating...' %>
+   
+<% end %>

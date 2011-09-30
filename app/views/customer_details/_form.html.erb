@@ -1,0 +1,65 @@
+<%= form_for(@customer_detail) do |f| %>
+  <% if @customer_detail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@customer_detail.errors.count, "error") %> prohibited this customer_detail from being saved:</h2>
+
+      <ul>
+      <% @customer_detail.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="actions">
+	<div class="left-side">
+		<%= f.label :name, "Name" %>
+	   	<%= f.text_field :name %>
+
+		<%= f.label :email, "Email" %>
+	   	<%= f.text_field :email %>
+
+		<%= f.label :address, "Address" %>
+	   	<%= f.text_field :address %>
+
+		<%= f.label :city, "City" %>
+	   	<%= f.text_field :city %>
+
+		<%= f.label :state, "State" %>
+	   	<%= f.text_field :state %>
+
+		<%= f.label :zip, "ZIP" %>
+	   	<%= f.text_field :zip %>
+	
+		<%= f.label :gender, "Gender" %>
+	   	<%= f.text_field :gender %>
+	
+		<%= f.label :home_owner, "Home Owner" %>
+	   	<%= f.text_field :home_owner %>
+	
+		<%= f.label :interests, "Interests" %>
+	   	<%= f.text_field :interests %>
+	</div>
+	<div class="right-side">
+		<%= f.label :deal_name, "Deal Name" %>
+	   	<%= f.text_field :deal_name %>
+
+		<%= f.label :date_of_deal, "Date of Deal" %>
+	   	<%= f.text_field :date_of_deal %>
+
+		<%= f.label :date_of_purchase, "Date of Purchase" %>
+	   	<%= f.text_field :date_of_purchase %>
+
+		<%= f.label :sale_price, "Sale Price" %>
+	   	<%= f.text_field :sale_price %>
+	
+		<%= f.label :industry, "Industry" %>
+	   	<%= f.text_field :industry %>
+	
+		<%= f.label :affiliate_enitity_name, "Affiliate" %>
+	   	<%= f.text_field :affiliate_enitity_name %>
+	</div>
+
+    <%= f.submit %>
+  </div>
+<% end %>

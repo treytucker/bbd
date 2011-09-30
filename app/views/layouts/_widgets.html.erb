@@ -1,0 +1,176 @@
+<% if session[:admin_id] %>
+<!-- LOGGED IN WIDGET VIEWS -->
+<% form_tag(move_dim_widgets_path, :method => "post") do %>
+
+<ul id="sidebar-sorter">
+	
+	<!-- <li class="indiv-widget">
+		<div class="widget-topper"></div>
+		<div class="widget-content">
+			<%= render 'layouts/sidebar_email_form' %>
+		</div>
+		<div class="widget-bottom"></div>
+	</li>	 -->	
+
+	<% @widgets.each do |f| %>
+		<li class="indiv-widget">
+			<div class="widget-topper"></div>
+			<div class="widget-content">				
+				
+					<% if @widget_order == "current_deal_order" %>
+						<%= hidden_field_tag "order[]", "#{f.id},#{f.current_deal_order}", :class => "widget_order_input" %>
+					<% end %>
+					<% if @widget_order == "recent_deal_order" %>
+						<%= hidden_field_tag "order[]", "#{f.id},#{f.recent_deal_order}", :class => "widget_order_input" %>
+					<% end %>
+					<% if @widget_order == "for_business_order" %>
+						<%= hidden_field_tag "order[]", "#{f.id},#{f.for_business_order}", :class => "widget_order_input" %>
+					<% end %>
+					<% if @widget_order == "contact_order" %>
+						<%= hidden_field_tag "order[]", "#{f.id},#{f.contact_order}", :class => "widget_order_input" %>
+					<% end %>
+					<% if @widget_order == "privacy_policy_order" %>
+						<%= hidden_field_tag "order[]", "#{f.id},#{f.privacy_policy_order}", :class => "widget_order_input" %>
+					<% end %>
+					<% if @widget_order == "terms_of_service_order" %>
+						<%= hidden_field_tag "order[]", "#{f.id},#{f.terms_of_service_order}", :class => "widget_order_input" %>
+					<% end %>
+				
+					<% if f.widgetable_type == 'twitter' %>
+						<h3 class="widget-title">Twitter Widget</h3>
+					<% end %>
+				
+					<% if f.widgetable_type == 'facebook' %>
+						<h3 class="widget-title">Facebook Widget</h3>
+					<% end %>
+				
+					<% if f.widgetable_type == 'mailchimp' %>
+						<h3 class="widget-title">MailChimp Widget</h3>
+					<% end %>
+				
+					<% if f.widgetable_type == 'custom' %>
+						<h3 class="widget-title"><%= f.title %></h3>
+					<% end %>
+
+				
+			</div>
+			<div class="widget-bottom"></div>
+		</li>
+	<% end %>		
+</ul>
+
+<%= submit_tag "Save Widgets", :disable_with => "Please wait...", :class => "widget-submit-btn" %>
+<% end %>
+<!-- END OF LOGGED IN WIDGET VIEWS -->
+	
+	<% else %>
+
+<!-- NOT LOGGED IN WIDGET VIEWS -->	
+	<ul id="sidebar">
+		<% @widgets.each do |f| %>
+			<% if f.widgetable_type == 'twitter' %>
+				<li class="indiv-widget">
+					<div class="widget-topper"></div>
+					<div class="widget-content">
+						<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+						<script>
+						new TWTR.Widget({
+						  version: 2,
+						  type: 'profile',
+						  rpp: 2,
+						  interval: 30000,
+						  width: 200,
+						  height: 300,
+						  theme: {
+						    shell: {
+						      background: '##E7E5D2',
+						      color: '#666666'
+						    },
+						    tweets: {
+						      background: '##E7E5D2',
+						      color: '#333333',
+						      links: '#36bcff'
+						    }
+						  },
+						  features: {
+						    scrollbar: false,
+						    loop: false,
+						    live: false,
+						    hashtags: true,
+						    timestamp: true,
+						    avatars: false,
+						    behavior: 'all'
+						  }
+						}).render().setUser('bigblockdeals').start();
+						</script>
+					</div>
+					<div class="widget-bottom"></div>
+				</li>
+			<% end %>
+		
+			<% if f.widgetable_type == 'facebook' %>
+			<li class="indiv-widget">
+				<div class="widget-topper"></div>
+				<div class="widget-content">
+					<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FBig-Block-Deals%2F182429288484620&amp;width=205&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=false&amp;header=true&amp;height=290" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:205px; height:290px;" allowTransparency="true"></iframe>					
+				</div>
+				<div class="widget-bottom"></div>
+			</li>
+			<% end %>
+		
+			<% if f.widgetable_type == 'mailchimp' %>
+				<li class="indiv-widget">
+					<div class="widget-topper"></div>
+					<div class="widget-content">
+						<script type="text/javascript">
+						// delete this script tag and use a "div.mce_inline_error{ XXX !important}" selector
+						// or fill this in and it will be inlined when errors are generated
+						var mc_custom_error_style = '';
+						</script>
+						<img src="/images/sidebar-signup-title.jpg"/>
+						<form action="http://bigblockdeals.us2.list-manage.com/subscribe/post?u=e2a52935443d9653028bbd36e&amp;id=251cbfea3a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+							<label>Email</label>
+							<input value="" name="email" type="text"></input>
+							<label>ZIP</label>
+							<input value="" name="ZIP" type="text"></input>
+							<input class="submit-btn" value="Let's do this!" name="submit" type="submit"></input>
+							</div>
+								<div id="mce-responses">
+									<div class="response" id="mce-error-response" style="display:none"></div>
+									<div class="response" id="mce-success-response" style="display:none"></div>
+								</div>
+							<div>
+						</form>
+					</div>
+					<div class="widget-bottom"></div>
+				</li>
+			<% end %>
+		
+			<% if f.widgetable_type == 'custom' %>
+			<li class="indiv-widget">
+				<div class="widget-topper"></div>
+				<div class="widget-content">
+					<% unless f.text_1 == nil || f.text_1.empty? %>
+						<%= f.text_1.html_safe %>
+					<% end %>
+					<% if f.title %>
+						<h3 class="widget-title"><%= f.title %></h3>
+					<% end %>
+					<% if f.text_2 %>
+						<span class="widget-text"><%= f.text_2.html_safe %></span>
+					<% end %>
+					<% if f.bottom_title %>
+						<span class="minor-widget-text"><%= f.bottom_title %></span>
+					<% end %>
+				</div>
+				<div class="widget-bottom"></div>
+			</li>	
+			<% end %>
+		<% end %>
+	</ul>
+
+<% end %>
+	
+
+
+

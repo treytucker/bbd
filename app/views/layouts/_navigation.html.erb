@@ -1,0 +1,18 @@
+<div id="nav-container">
+	<div id="navigation">
+		<h1 id="root-link"><a href="/">root</a></h1>
+		
+		<table id="greater-nav">
+			<tr>
+				<td class="greater-nav-item"><%= link_to 'Today\'s Deal', :root, :id => 'today-link' %></td>
+				<td class="greater-nav-item"><%= link_to 'Recent Deals', :recent_deals %></td>
+				<td class="greater-nav-item"><%= link_to 'How It Works', :how_it_works_consumers %></td>
+				<td class="greater-nav-item"><%= link_to 'For Businesses', :for_businesses %></td>
+				<td class="greater-nav-item"><%= link_to 'BBD Blog', good_reads_path %></td>
+				<td class="greater-nav-item"><a href="javascript:void(0);" id="mydeals" onclick="javascript:showMyDeals();">My Account</a></td>
+				<td class="greater-nav-item" id="login"></td>
+			</tr>
+		</table>
+		</ul>
+	</div>
+</div>

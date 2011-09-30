@@ -1,0 +1,362 @@
+@charset "utf-8";
+html, body { margin:0; padding:0; overflow-x:hidden; }
+/* CSS Document */
+
+/*body 
+{
+	width:600px;
+	margin: 20px; 
+	padding: 0px; 
+	background: #FFF; 
+	font: 16px arial, sans-serif; 
+}*/
+   
+#DCmenu 
+{ 
+	color: #000; 
+	padding: 0px;
+	margin:10px 0px 0px;
+}
+
+#DCmenu li { display: inline; overflow: hidden; list-style-type: none; }
+
+#DCmenu a, a.active { color: #FFF; background: #509CCA; font: bold 1em "Trebuchet MS", Arial, sans-serif;
+	              border: 2px solid black; padding: 2px 5px 0px 5px; margin: 0; text-decoration: none; }
+
+#DCmenu a.active { background: #509CCA; border-bottom: 3px solid #509CCA; }
+
+#DCmenu a:hover { color: #000; background: #509CCA; }
+
+#DCmenu a:visited { color: #fff; }
+
+#DCmenu a.active:hover { background: #509CCA; color: #fff; }
+
+/*.content 
+{
+	font: 0.9em/1.3em "bitstream vera sans", verdana, sans-serif;
+	text-align: justify;
+	background: #FFF;
+	border: 2px solid black;
+	width: 566px; 
+}*/
+		
+
+.dealimg { 
+position:absolute; top:5px; left:5px;
+}
+
+.loginnavdiv  {
+	width: 580px; 
+	height:25px; 
+}
+.loginnav { background:#000}
+.loginnav a, .loginnav a:visited { 
+	color:#FFFFFF; 
+	background-color:#0F1A25;
+	padding:5px; 
+	font-size:14px; 
+	font-weight:bold; 
+	font-family:Arial, Helvetica, sans-serif; 
+	text-decoration:none; 
+	}
+.loginnav a:hover, .loginnav a:active {
+	color:#FFF; 
+	background-color:#509CCA;
+	padding:5px; 
+	font-size:14px; 
+	font-weight:bold; 
+	font-family:Arial, Helvetica, sans-serif; 
+	text-decoration:none; 
+	}
+	
+/* CSS Document */
+.tablewrapper 
+{	
+	width:555px;
+	height:100px;
+	font-size:16px;
+	font-weight:bold;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#000000;
+	margin:0px;
+	padding:0px;
+	border:1px solid silver;
+}
+.tablebg {	
+	width:580px;
+	height:120px;
+	font-size:16px;
+	font-weight:bold;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#000000;
+	left: 11px;	
+}
+.tableheader {
+	width:580px; 
+	height:16px; 
+	font-size:16px; 
+	font-weight:bold; 
+	font-family:Arial, Helvetica, sans-serif; 
+	color:#000000;
+}
+.DCLogoutListener {
+	width:140px;
+	height:90px;	
+	background-color:#999999;
+}
+.dealinfo {
+	position:absolute;
+	top:2px;
+	width:317px;
+	height:90px;
+	font-size:16px;
+	font-weight:bold;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#000000;
+	left: 153px;
+}
+.companyname a:link {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:19px;
+	line-height:120%;
+	font-weight:normal;
+	color:#990000;
+	font-weight:bold;
+	text-decoration:none;
+}
+.companyname a:hover {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:19px;
+	line-height:120%;
+	font-weight:normal;
+	color:#990000;
+	font-weight:bold;
+	text-decoration:underline;
+}
+
+
+.text {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:120%;
+	font-weight:normal;
+	color:#000000;
+}
+
+.text_value {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:120%;
+	font-weight:normal;
+	color:#FFFFFF;
+}
+
+.expiration {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:120%;
+	font-weight:normal;
+	color:#B3B4B0;
+	font-weight:bold;
+}
+.expired {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:15px;
+	line-height:130%;
+	font-weight:normal;
+	color:#CC6633;
+	font-weight:bold;
+}
+.dealactionsdiv 
+{
+	position:relative;
+	top:71px;
+	left:153px;
+	width:280px;
+}
+
+/*
+.dealactions a:hover, a:active {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	text-decoration:underline;
+	color:#990000;
+	padding:8px;
+}
+*/
+.login_pricebox {
+	position: absolute;
+	top:8px;
+	left:465px;
+	background-color:#091625;
+	padding:10px 20px;
+	text-align:center;
+}
+.price {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:19px;
+	line-height:120%;
+	font-weight:normal;
+	color:#FFFFFF;
+	font-weight:bold;
+}
+.login_status_available {
+	position: absolute;
+	width:81px;
+	top:72px;
+	left:464px;
+	background-color:#26AB2F;
+	padding:2px 0px;
+	text-align:center;
+}
+.login_status {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:120%;
+	font-weight:bold;
+	color:#ffffff;
+	font-weight:normal;
+}
+.login_status_used {
+	position: absolute;
+	width:81px;
+	top:72px;
+	left:464px;
+	background-color:#C51E23;
+	padding:2px 0px;
+	text-align:center;
+}
+.login_status_expired {
+	position: absolute;
+	width:81px;
+	top:72px;
+	left:464px;
+	background-color:#545453;
+	padding:2px 0px;
+	text-align:center;
+}
+
+/* REFER A FRIEND*/
+.text {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:normal;
+}
+#raf { 
+	position:absolute;
+	top:30px;
+	left:10px;
+	width:600px;
+	height:200px;
+}
+#raf_top {
+	position:relative;
+	top:5px;
+	left:5px;
+	width:550px;
+}
+#raf_bottom {
+	padding:5px;
+}
+#raf_info
+{
+	background-color:#ddd;
+	padding:5px;
+}
+#raf_bottom2 {
+	position:relative;
+	top:10px;
+	left:6px;
+	width:560px;
+	background-color:#ddd;
+	padding:5px;
+}
+#raf_right {
+	position:relative;
+	top:-180px;
+	left:385px;
+	width:200px;
+	padding:5px;
+}
+#raf_right ul {
+	margin-top:0px;
+	margin-left:-30px;
+}
+.title {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:15px;
+	font-weight:bold;
+}
+.title2 {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	
+}
+.subtitle {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	font-weight:normal;
+	text-align:center;
+}
+
+#raf_credits {
+	position:absolute;
+	top:68px;
+	left:5px;
+	width:365px;
+	padding:0px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:15px;
+	font-weight:bold;
+	height: 19px;
+}
+#number {
+		position:relative;
+		top:-25px;
+		left:215px;
+		width:60px;
+		background-color:#FF9;
+		font-size:20px;
+		padding:3px;
+		text-align:center;
+}
+.number {
+		width:60px;
+		height:20px;
+		font-size:20px;
+		padding:3px;
+		text-align:center;
+}
+.link {
+		height:5px;
+		background-color:#ffffff;
+		font-size:10px;
+		padding:3px;
+		text-align:center;
+		width: 550px;
+		
+}
+#link {
+		height:16px;
+		background-color:#ffffff;
+		font-size:10px;
+		padding:3px;
+		text-align:left;
+		padding-top:8px;
+		width: 500px;
+		white-space: nowrap;
+		
+}
+
+#raf_share {
+	position:absolute;
+	top:77px;
+	left:5px;
+	width:550px;
+	padding:5px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:15px;
+	font-weight:bold;
+}

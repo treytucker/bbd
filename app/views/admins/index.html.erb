@@ -1,0 +1,22 @@
+<div class="edit-page">
+	<div class="topper"></div>
+	<div class="main-content">
+		<h2>List of the Admins</h2>
+			<%= render "shared/error_messages", :target => @admin %>
+		<ul class="admin-list">
+			<% @admins.each do |f| %>
+				<li class="semi-bold-item">
+					<p><%= f.email %></p>
+					<% if super_user? %> <!-- Call this method if you want to exclude any non-super user from seeing something -->
+						<%= link_to "Modify User", edit_admin_path(f.id) %>
+						<%= link_to "Remove User", { :action => :destroy, :id => f.id }, :confirm => 'Are you sure?', :method => :delete %>
+					<% end %>
+				</p></li>
+			<% end %>
+		</ul>
+
+		<%= link_to "Create a new administrator", new_admin_path %><br>
+	</div>
+	<div class="bottom"></div>
+</div>
+	

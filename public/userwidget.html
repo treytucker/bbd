@@ -1,0 +1,407 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>My Account</title>
+ 
+ <!-- replace {publisherID} with your Deal Current Publisher ID -->
+ <script src="https://www.dealcurrent.com/embed/index.php?publisherID=232"></script>
+ <script src="https://s3.amazonaws.com/media.collarfree.com/dealcurrent/js/userwidget.js"></script>
+ <!-- replace publisherID with your Deal Current Publisher ID -->
+ <!-- <link rel="stylesheet" type="text/css" href="https://s3.amazonaws.com/media.collarfree.com/dealcurrent/templates/{publisherID}/css/userwidget.css"> -->
+
+ <!-- for local testing only. remove when live -->
+ <link rel="stylesheet" type="text/css" href="/stylesheets/userwidget.css">
+ <script>
+    
+  // TEST CODE: Remove after completing your design
+
+  // END TEST CODE
+  
+  // change the value of backgroundColor below to match the colors of your site
+  function showAvailableDeals()
+  {
+   hideDealDivs();
+   document.getElementById("My-Deals-Available").style.display="block";
+   document.getElementById("AvailableHeader").style.backgroundColor="#509CCA";
+   document.getElementById("DealNavigation").style.visibility="visible";
+  }
+  function showUsedDeals()
+  {
+   hideDealDivs();
+   document.getElementById("My-Deals-Used").style.display="block";
+   document.getElementById("UsedHeader").style.backgroundColor="#509CCA";
+   document.getElementById("DealNavigation").style.visibility="visible";
+  }
+  function showExpiredDeals()
+  {
+   hideDealDivs();
+   document.getElementById("My-Deals-Expired").style.display="block";
+   document.getElementById("ExpiredHeader").style.backgroundColor="#509CCA";
+   document.getElementById("DealNavigation").style.visibility="visible";
+  }
+  function showAllDeals()
+  {
+   hideDealDivs();
+   document.getElementById("My-Deals-All").style.display="block";	
+   document.getElementById("AllHeader").style.backgroundColor="#509CCA";
+   document.getElementById("DealNavigation").style.visibility="visible";
+  }
+ </script>	
+	
+</head>
+
+<body class='userwidget'>
+
+<ul id="DCmenu">
+ <li> <a class="active" href="javascript: void(0);" id="My-Deals-Link" onclick="show('My-Deals');">My Deals</a> </li>
+
+ <li> <a href="javascript: void(0);" id="My-Info-Link" onclick="show('My-Info');">My Info</a> </li>
+ <li> <a href="javascript: void(0);" id="Refer-A-Friend-Link" style="display: none;" onclick="show('Refer-A-Friend');">Refer A Friend</a> </li>
+
+</ul>
+
+<div id="My-Deals" class="content">
+	
+  <!-- Deal Navigation -->
+  <div class="loginnavdiv" id="DealNavigation" style="position:absolute; left: 30px; top: 60px;">
+
+   <span id="loginnav" class="loginnav">
+    <a href="javascript:showAvailableDeals();" id="AvailableHeader" style="background-color:#509CCA;">Available</a> 
+    <a href="javascript:showUsedDeals();" id="UsedHeader">Used</a> 
+    <a href="javascript:showExpiredDeals();" id="ExpiredHeader">Expired</a> 
+    <a href="javascript:showAllDeals();" id="AllHeader">All</a>
+
+   </span>
+  </div>
+  
+  <span id="no_deals" style="display: none; position:absolute; left:30px; top:105px;"> You have no purchased deals at this time. </span>
+
+  
+  <!-- Available Deal template --> 
+    <div id="Voucher-available-Template" style="display:none;">
+     <div class="tablewrapper">
+      <div class="dealimg"><img src="https://s3.amazonaws.com/media.collarfree.com/dealcurrent/images/{dealID}_logo.png" alt="Deal Image" width="140" height="90"/></div>
+      <div class="dealinfo">
+
+       <span class="companyname">{companyName}</span><br/>
+       <span class="text">Purchased On: {purchaseDate}<br/>
+        Quantity: {quantity}</span><br/>
+
+       <span class="expiration">EXPIRES ON: {expirationDate}</span>
+      </div>
+      <div class="dealactionsdiv">
+       <span class="dealactions">
+
+        <a href="javascript:printVoucher('{voucherCode}');">
+	 <img src="https://s3.amazonaws.com/media.collarfree.com/dealcurrent/templates/5/images/login_button_print.png" width="22" height="17" alt="print_voucher" border="0"/>Print Voucher</a>
+        <a href="javascript:void(0);" onClick="dealcurrent({method:'markUsed',voucherGUID:'{voucherCode}',callback:'markedUsed'});">			    
+	 <img src="https://s3.amazonaws.com/media.collarfree.com/dealcurrent/templates/5/images/login_button_used.png" width="22" height="17" alt="mark_as_used" border="0">Mark as Used</a>
+
+       </span>
+      </div>
+      <div class="login_pricebox"><span class="text_value">VALUE</span><br/><span class="price">${regPrice}</span></div>
+
+      <div class="login_status_available"><span class="login_status">Available</span></div>
+     </div>
+  </div>
+    
+    <!-- Expired Deal template -->
+
+    <div id="Voucher-expired-Template" style="display:none;">
+     <div class="tablewrapper">
+      <div class="dealimg"><img src="https://s3.amazonaws.com/media.collarfree.com/dealcurrent/images/{dealID}_logo.png" alt="Deal Image" width="140" height="90"/></div>
+      <div class="dealinfo">
+
+       <span class="companyname"><a href="largewidget">{companyName}</a></span><br/>
+       <span class="text">Purchased On: {purchaseDate}<br/>
+       Quantity: {quantity}</span><br/>
+
+      </div>
+      <div class="dealactionsdiv"><span class="expired">EXPIRED ON: {expirationDate}</span></div>
+      <div class="login_pricebox"><span class="text_value">VALUE</span><br/><span class="price">${regPrice}</span></div>
+
+      <div class="login_status_expired"><span class="login_status">Expired</span></div>
+     </div>
+    </div>
+
+    
+    <!-- Used Deal template -->
+    <div id="Voucher-used-Template" style="display:none;">
+     <div class="tablewrapper">
+      <div class="dealimg"><img src="https://s3.amazonaws.com/media.collarfree.com/dealcurrent/images/{dealID}_logo.png" alt="Deal Image" width="140" height="90"/></div>
+      <div class="dealinfo">
+
+       <span class="companyname">{companyName}</span><br/>
+       <span class="text">Purchased On: {purchaseDate}<br/>
+
+       Quantity: {quantity}</span><br/>
+       <span class="expiration">EXPIRES ON: {expirationDate}</span>
+      </div>
+      <div class="dealactionsdiv">
+       <span class="dealactions">
+
+        <a href="javascript:void(0);" onClick="dealcurrent({method:'markUnused',voucherGUID:'{voucherCode}',callback:'markedUnused'});"><img src="https://s3.amazonaws.com/media.collarfree.com/dealcurrent/templates/5/images/login_button_unused.png" width="22" height="17" alt="print_voucher" border="0"/>Mark as Unused</a>
+       </span>
+
+      </div>
+      <div class="login_pricebox"><span class="text_value">VALUE</span><br/><span class="price">${regPrice}</span></div>
+      <div class="login_status_used"><span class="login_status">Used</span></div>
+     </div>
+    </div>
+
+    
+    <!-- All Deal template -->
+    <div id="Voucher-all-Template" style="display:none;">
+
+     <div class="tablewrapper">
+      <div class="dealimg"><img src="https://s3.amazonaws.com/media.collarfree.com/dealcurrent/images/{dealID}_logo.png" alt="Deal Image" width="140" height="90"/></div>
+      <div class="dealinfo">
+       <span class="companyname"><a href="largewidget">{companyName}</a></span><br/>
+       <span class="text">Purchased On: {purchaseDate}<br/>
+        Quantity: {quantity}</span><br/>
+
+       <span class="expiration">EXPIRES ON: {expirationDate}</span>
+
+      </div>
+      <div class="dealactionsdiv">
+       <span class="dealactions">
+        <a href="javascript:printVoucher('{voucherCode}');">
+	 <img src="https://s3.amazonaws.com/media.collarfree.com/dealcurrent/templates/5/images/login_button_print.png" width="22" height="17" alt="print_voucher" border="0"/>Print Voucher</a>
+        <a href="javascript:dealcurrent({method:'markUsed',voucherGUID:'{voucherCode}'});">			    
+	 <img src="https://s3.amazonaws.com/media.collarfree.com/dealcurrent/templates/5/images/login_button_used.png" width="22" height="17" alt="mark_as_used" border="0">Mark as Used</a>
+
+       </span>
+
+      </div>
+      <div class="login_pricebox"><span class="text_value">VALUE</span><br/><span class="price">${regPrice}</span></div>
+      <div class="login_status_available"><span class="login_status">Available</span></div>
+     </div>
+    </div>
+<div id="My-Deals-Available" style="position:relative; left:4px; overflow:hidden; margin:50px 0px 0px;"><script>renderDealsWithStatus("available");</script></div>
+
+<div id="My-Deals-Used"      style="position:relative; left:4px; display:none; overflow:hidden; margin:50px 0px 0px;"><script>renderDealsWithStatus("used");</script></div>
+
+<div id="My-Deals-Expired"   style="position:relative; left:4px; display:none; overflow:hidden; margin:50px 0px 0px;"><script>renderDealsWithStatus("expired");</script></div>
+<div id="My-Deals-All"       style="position:relative; left:4px; display:none; overflow:hidden; margin:50px 0px 0px;"><script>renderDealsWithStatus("all");</script></div>
+<div style="clear:both"></div>
+</div>
+
+<div id="My-Info" class="content" style="display: none;">
+  <!-- Status update message -->
+   <div id="My-Info-Status" style="display: none; background-color: #FF0000; color: #FFFFFF;">Thanks, your info has been updated.</div>
+   
+   <!-- My Info - no edit layout -->
+
+   <div id="My-Info-View">       
+    <table>
+
+     <tr>
+      <td colspan="2" style="font-weight:bold">Personal Information </td>
+     </tr>
+     <tr>
+      <td> First Name: </td>
+      <td> <span id="customersFirstname"></span> </td>
+
+     </tr>
+     <tr>
+      <td> Last Name: </td>
+      <td> <span id="customersLastname"></span> </td>
+     </tr>
+     <tr>
+
+      <td> Email Address: </td>
+
+      <td> <span id="customersEmailAddress"></span> </td>
+     </tr>
+     <tr>
+      <td> Address: </td>
+
+      <td> <span id="customersAddress"></span> </td>
+     </tr>
+
+     <tr>
+      <td> City: </td>
+      <td> <span id="customersCity"></span> </td>
+
+     </tr>
+     <tr>
+      <td> State: </td>
+
+      <td> <span id="customersState"></span> </td>
+     </tr>
+     <tr>
+
+      <td> Zip: </td>
+      <td> <span id="customersZip"></span> </td>
+     </tr>
+
+     <tr>
+      <td colspan="2" align="right"> <input type="button" value="Edit" onclick="document.getElementById('My-Info-View').style.display='none'; document.getElementById('My-Info-Edit').style.display='block';"> </td>
+
+     </tr>
+    </table>    
+   </div>
+   
+   <!-- My Info edit template -->
+   <div id="My-Info-Edit" style="display: none;">   
+    <form method="post" action="">
+    <table id="userEditTable">
+
+     <tr>
+      <td colspan="2" style="font-weight:bold"> Personal Information </td>
+
+     </tr>
+     <tr>
+      <td> First Name: </td>
+      <td> <input type="text" id="customersFirstnameEdit" value="{customersFirstname}"> </td>
+
+     </tr>
+     <tr>
+
+      <td> Last Name: </td>
+      <td> <input type="text" id="customersLastnameEdit" value="{customersLastname}"> </td>
+     </tr>
+     <tr>
+      <td> Email Address: </td>
+
+      <td> <input type="text" id="customersEmailAddressEdit" value="{customersEmailAddress}"> </td>
+     </tr>
+     <tr>
+      <td> Address: </td>
+      <td> <input type="text" id="customersAddressEdit" value="{customersAddress}"> </td>
+     </tr>
+
+     <tr>
+      <td> City: </td>
+      <td> <input type="text" id="customersCityEdit" value="{customersCity}"> </td>
+     </tr>
+     <tr>
+      <td> State: </td>
+
+      <td> <input type="text" id="customersStateEdit" value="{customersState}" size="2"> </td>
+     </tr>
+     <tr>
+      <td> Zip: </td>
+      <td> <input type="text" id="customersZipEdit" value="{customersZip}" size="5"> </td>
+
+     </tr>
+
+     <tr>      
+      <td colspan="2" align="right"> <input type="button" value="Save" onclick="saveUser();"> </td>
+     </tr>
+    </table>
+    </form>
+   </div>
+   
+
+</div>
+ 
+ <div id="Refer-A-Friend" class="content" style="display: none;">
+
+  
+    <div id="raf_top">
+     <table width="550" cellpadding="0" cellspacing="5">
+      <tr>
+        <td class="title">Get $<script>document.write(RAFValue);</script> in <script>document.write(RAFLabel);</script> for Referring Friends!<br/>
+
+        <span class="text">You'll receive $<script>document.write(RAFValue);</script> in <script>document.write(RAFLabel);</script> when someone you refer buys their first deal.</span></td>
+
+      </tr>
+      <tr>
+       <td>
+        <table cellpadding="0" cellspacing="0">
+
+	 <tr>
+    	  <td class="title2" style="padding-right:5px;"><script>document.write(RAFLabel);</script> you have earned:</td>
+          <td class="number">$<script>document.write(user['RAFCredits'])</script></td>
+
+    	 </tr>
+	</table>
+       </td>
+
+      </tr>
+     </table>
+    </div>
+   <script> var d = new Date(); </script>
+    <div id="raf_info" style="padding:5px;">
+
+    	<table width="550" border="0" cellspacing="0" cellpadding="3">
+          <tr>
+       <td colspan="4" class="title2">Share your unique referral link:</td>
+
+      </tr>
+      <tr>
+       <td width="550" colspan="4"><div id="link"><script>document.write(RAFLink);</script></div></td>
+      </tr>
+      <tr>
+
+      	<td>
+        <table width="150" border="0" cellspacing="0">
+      <tr class="subtitle">
+
+        <td><script>document.write("<a target='facebook' border=0 href='http://www.facebook.com/share.php?u="+encodeURIComponent(RAFLink)+"'><img border=0 src=\"https://s3.amazonaws.com/media.collarfree.com/dealcurrent/templates/5/images/RAF_facebook.png\"/></a>");</script></td>
+        <td><script>document.write("<a border=\"0\" href=\"http://twitter.com/home?status="+encodeURIComponent("Checkout this site, it has great deals!")+"%20"+RAFLink+"\" target=\"_blank\">");</script><img src="https://s3.amazonaws.com/media.collarfree.com/dealcurrent/templates/5/images/RAF_twitter.png" alt="twitter" border="0" /></a></td>
+        <td><script>document.write("<a border=0 href=\"mailto:?body=Check out the deals at "+encodeURIComponent(RAFLink)+"!&amp;subject=Checkout this Daily Deal!\">");</script><img src="https://s3.amazonaws.com/media.collarfree.com/dealcurrent/templates/5/images/RAF_email.png" alt="email" border="0" /></a></td>
+      </tr>
+
+      <tr class="subtitle">
+        <td>Post</td>
+
+        <td>Tweet</td>
+        <td>Email</td>
+      </tr>
+</table>
+</td>
+      </tr>
+
+        </table>
+    </div>
+
+    <div id="raf_bottom" style="padding:5px;">
+     <table width="550" cellpadding="3" cellspacing="0" border="0">
+      <tr>
+       <td colspan="4" class="title2">How It Works:</td>
+      </tr>
+      <tr>
+
+       <td colspan="4"> 
+        <ul>
+
+         <li>Share your links with your friends.</li>
+         <li>Get $<script>document.write(RAFValue);</script> in <script>document.write(RAFLabel);</script> when your friends make their first purchase.</li>
+         <li><script>document.write(RAFLabel);</script> last one year!</li>
+
+         <li><script>document.write(RAFLabel);</script> are automatically applied to your next purchase.</li>
+        </ul>
+       </td>
+      </tr>
+      <tr>
+       <td colspan="4">  <span class="title2">Fine Print:</span> </td>
+
+      </tr>
+      <tr>
+       <td colspan="4">
+        <ul>
+         <li>You only get referral credit for a new customer's first purchase. </li>
+         <!-- <li><script>document.write(RAFValue);</script> are limited to {RAFMax} new customers per household</li> -->
+         <li>Call 1-866-316-3001 if you have questions.</li>
+
+         <!--<li><a href="https://s3.amazonaws.com/media.collarfree.com/dealcurrent/templates/32/howrafworks.html">Read Complete Terms</a></li>-->
+
+        </ul>
+       </td>
+      </tr>
+     </table>
+   
+ </div>
+
+</div>
+
+<script> renderUserInfo(); </script>
+
+<script> if(RAFValue>0) document.getElementById("Refer-A-Friend-Link").style.display="inline"; </script>
+
+<script> if(vouchers.length==0) document.getElementById("no_deals").style.display = 'block'; </script>
+
+</body>
+</html>

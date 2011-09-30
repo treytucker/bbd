@@ -1,0 +1,29 @@
+<div class="content-header">
+	<img class="page-header" src="/images/about-us-title.jpg"/>
+</div>
+<div class="about-us-section">
+<%= form_for @content, :url => :about_uses_create do |f| -%>
+<%= render "shared/error_messages", :target => @content %>
+	<img src="/images/about-us-house.jpg"/>
+	<%= f.text_field :header_1, :class => "edit-input" %>
+	<%= f.text_area :content_1 %>
+</div>
+<div class="about-us-section">
+	<img src="/images/about-us-check.jpg"/>
+	<%= f.text_field :header_2, :class => "edit-input" %>
+	<%= f.text_area :content_2 %></div>
+<div class="about-us-section">
+	<img src="/images/about-us-tools.jpg"/>
+	<%= f.text_field :header_3, :class => "edit-input" %>
+	<%= f.text_area :content_3 %>
+</div>
+<img class="narrow-dotted-line" src="/images/dotted-line.jpg"/>
+<div class="about-us-section">
+	<img src="/images/about-us-logo.jpg"/>
+	<%= f.text_field :tag_line, :class => "edit-input" %>
+</div>
+<%= f.submit "Save", :disable_with => 'Saving...', :class => "edit-submit" %>
+
+<% end -%>
+
+

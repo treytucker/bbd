@@ -1,0 +1,26 @@
+<div class="content-header">
+	<img class="page-header" src="/images/about-us-title.jpg"/>
+</div>
+<div class="about-us-section">
+	<img src="/images/about-us-house.jpg"/>
+	<h2 class="cafeta"><%= @content.header_1 %></h2>
+	<p><%= @content.content_1 %></p>
+</div>
+<div class="about-us-section">
+	<img src="/images/about-us-check.jpg"/>
+	<h2 class="cafeta"><%= @content.header_2 %></h2>
+	<p><%= @content.content_2 %></p>
+</div>
+<div class="about-us-section">
+	<img src="/images/about-us-tools.jpg"/>
+	<h2 class="cafeta"><%= @content.header_3 %></h2>
+	<p><%= @content.content_3 %></p>
+</div>
+<img class="narrow-dotted-line" src="/images/dotted-line.jpg"/>
+<div class="about-us-section">
+	<img src="/images/about-us-logo.jpg"/>
+	<h2 class="last-about-us cafeta"><%= @content.tag_line.html_safe %></h2>
+</div>
+
+<!-- admin Stuffs -->
+<%= render :partial => 'basics/edit_admin_stuff' %>

@@ -1,0 +1,48 @@
+<div class="content-header">
+	<img class="page-header" src="/images/how-it-works-title.jpg"/>
+	<div class="how-it-works-nav">
+		
+		<%= link_to	'', :how_it_works_consumers, :class => "consumers" %>
+		<a class="businesses business-active"></a>
+	</div>
+</div>
+<div class="hiw-content">
+	<%= form_for @content, :url => :how_it_works_businesses_create do |f| -%>
+	<%= render "shared/error_messages", :target => @content %>
+	<div class="hiw-business-main">
+		<%= f.text_field :main_header, :class => "edit-input" %><br>
+		<%= f.label :main_content, "Main_content", :class => "admin-edit-label" %>
+		<%= f.text_area :main_content %>
+	</div>
+	<%= link_to '', :for_businesses, :id => "hiw-biz-signup-link" %>
+	<img id="hiw-business-graphic" src="/images/hiw-business-graphic.jpg"/>
+	<div class="hiw-business-text">
+		<h2><%= f.text_field :subheader_1, :class => "edit-input-narrow" %></h2>	
+		<%= f.text_area :subcontent_1, :class => "mceEditor" %>
+	</div>
+	
+	<div class="hiw-business-text">
+		<h2><%= f.text_field :subheader_2, :class => "edit-input-narrow" %></h2>
+		<%= f.text_area :subcontent_2, :class => "mceEditor" %>
+	</div>
+	<div class="hiw-business-text">
+		<h2><%= f.text_field :subheader_3, :class => "edit-input-narrow" %></h2>
+		<%= f.text_area :subcontent_3, :class => "mceEditor" %>
+	</div>
+	<div class="hiw-business-text">
+		<h2><%= f.text_field :subheader_4, :class => "edit-input-narrow" %></h2>
+		<%= f.text_area :subcontent_4, :class => "mceEditor" %>
+	</div>
+	<div class="hiw-business-text">
+		<h2><%= f.text_field :subheader_5, :class => "edit-input-narrow" %></h2>
+		<%= f.text_area :subcontent_5, :class => "mceEditor" %>
+	</div>
+	<div class="hiw-business-text">
+		<h2><%= f.text_field :subheader_6, :class => "edit-input-narrow" %></h2>
+		<%= f.text_area :subcontent_6, :class => "mceEditor" %>
+	</div>
+	
+	<%= f.submit "Save", :disable_with => 'Saving...', :class => "edit-submit" %>
+	<% end -%>
+	
+</div>

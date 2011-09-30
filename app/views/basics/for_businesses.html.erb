@@ -1,0 +1,78 @@
+<%= render "shared/error_messages", :target => @lead %>
+<div class="content-header">
+	<img class="page-header" src="/images/feature-your-business-title.jpg"/>
+</div>
+<div class="for-businesses-main">
+	<h2><%= @content.header %></h2>
+	<p><%= @content.content %></p>
+
+	<%= form_for @business_inquiries, :as => "business_inquiries", :url => { :controller => "business_leads", :action => "index" }, :html => { :id => "business-contact-form" } do |f| -%>
+		<p class="full-width-clearer">Fields marked with * are required.</p>
+		<div class="half-width-form">
+			<%= f.label :first_name, "* First Name" %>
+			<%= f.text_field :first_name %>
+		</div>
+		
+		<div class="half-width-form">
+			<%= f.label :last_name, "* Last Name" %>
+			<%= f.text_field :last_name %>
+		</div>
+
+		<div class="half-width-form">
+			<%= f.label :email, "* Email" %>
+			<%= f.text_field :email %>
+		</div>
+		
+		<div class="half-width-form">
+			<%= f.label :phone, "Phone Number" %>
+			<%= f.text_field :phone %>
+		</div>
+		
+		<div class="half-width-form">
+			<%= f.label :company, "* Company Name" %>
+			<%= f.text_field :company %>
+		</div>
+
+		<div class="half-width-form">
+			<%= f.label :website, "Website" %>
+			<%= f.text_field :website %>
+		</div>
+
+		<div class="full-width-form">
+			<%= f.label :address, "Address" %>
+			<%= f.text_field :address %>
+		</div>
+
+		<div class="full-width-form location-details">
+			<div id="city-fields">
+				<%= f.label :city, "City" %>
+				<%= f.text_field :city, :html => { :class => "business-input" } %>
+			</div>
+			<select class="state-dropdown" name="business_inquiries[state]">
+			  <%= options_for_select( [[ @lead ? @lead.state : "State", "" ]] + State::NAMES ) %>
+			</select>
+			<div id="zip-fields">
+				<%= f.label :zip, "* ZIP" %>
+				<%= f.text_field :zip_code %>
+			</div>
+		</div>
+		
+		<div class="full-width-form">
+		<%= f.label :message, "Message" %>
+		<%= f.text_area :message %>
+		</div>
+
+		<div class="full-width-form business-tester">
+			<p class="trebuchet">Are you Human?</p><br></br>
+			<span class="trebuchet">What is three added to four?</span>
+			<%= f.text_field :test, :value => "Whats the answer?" %>
+		</div>
+		<div class="full-width-form">
+			<%= f.submit "Send!", :disable_with => 'Sending...', :html => { :class => "business-submit" } %>
+		</div>
+	<% end -%>
+
+</div>
+
+<!-- admin Stuffs -->
+<%= render :partial => 'basics/edit_admin_stuff' %>

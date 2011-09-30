@@ -1,0 +1,74 @@
+<%= form_for @widget, :html => { :multipart => true } do |f| %>
+
+
+<div class="full-width-clearer">
+	<%= f.select :widgetable_type, options_for_select([['Twitter', 'twitter'], ['Custom', 'custom'], ['Facebook', 'facebook'], ['Mail Chimp', 'mailchimp']], :selected => :widgetable_type) %>
+</div>
+
+
+
+<div class="full-width-clearer">
+	<%= f.label :text_1, "Video Embed Code - BE SURE TO SET THE WIDTH TO 200PX IN THE EMBED CODE!!" %>
+   	<div class="widget-iframe">
+   		<%= f.text_area :text_1 %>
+   	</div>
+</div>	
+
+<div class="full-width-clearer">
+	<div class="half-width-box">
+		<div class="full-width-clearer">
+			<%= f.label :title, "Widget Title Text" %>
+		   	<%= f.text_field :title %>   
+		</div>
+		<div class="full-width-clearer">
+			<%= f.label :bottom_title, "Minor Title" %>
+			<%= f.text_field :bottom_title %>
+		</div>
+	</div>
+	<div class="full-width-clearer">
+		<%= f.label :text_2, "Main widget text" %>
+		<%= f.text_area :text_2, :class => "mceEditor" %>	
+	</div>
+</div>   	
+
+<div class="full-width-clearer">
+	<a href="http://bbd-images.bigblockdeals.com/image-manager" target="blank">Manage Images</a>
+</div>
+
+<div class="full-width-clearer">
+	<p class="full-width-clearer">Active Pages:</p>
+	<div class="active-page-checkbox">
+		<%= f.label :about_us_active, "About Us" %>
+		<%= f.check_box :about_us_active, :class => "checkbox" %>
+	</div>
+	<div class="active-page-checkbox">
+		<%= f.label :contact_active, "Contact" %>
+		<%= f.check_box :contact_active, :class => "checkbox" %>
+	</div>
+	<div class="active-page-checkbox">
+		<%= f.label :current_deal_active, "Current Deal" %>
+		<%= f.check_box :current_deal_active, :class => "checkbox" %>
+	</div>
+	<div class="active-page-checkbox">
+		<%= f.label :recent_deal_active, "Recent Deal" %>
+		<%= f.check_box :recent_deal_active, :class => "checkbox" %>		
+	</div>
+	<div class="active-page-checkbox">
+		<%= f.label :privacy_policy_active, "Privacy Policy" %>
+		<%= f.check_box :privacy_policy_active, :class => "checkbox" %>		
+	</div>
+	<div class="active-page-checkbox">
+		<%= f.label :for_business_active, "For Business" %>
+		<%= f.check_box :for_business_active, :class => "checkbox" %>		
+	</div>
+	<div class="active-page-checkbox">
+		<%= f.label :terms_of_service_active, "Terms Of Service" %>
+		<%= f.check_box :terms_of_service_active, :class => "checkbox" %>		
+	</div>
+	
+</div>
+
+<div class="full-width-clearer">
+	<%= f.submit "Submit", :disable_with => 'Submitting...' %>
+</div>
+<% end %>

@@ -1,0 +1,44 @@
+<% if @posts.empty? %>
+	<p>There are no posts in the <%= params[:id].capitalize %> category</p>
+<% else %>
+	  <div class="posts-container">
+		<div class="first-post">
+		<div class="topper"></div>
+			<div class="content-header">
+				<img class="page-header" src="/images/good-reads-title.jpg"/>
+				<%= link_to "Back to All Posts", good_reads_path, :class => "back-to-all-link" %>
+			</div>
+		<div class="bottom"></div>
+		</div>
+	<% @posts.each do |f| %>
+
+<div class="regular-post">
+	<div class="topper"></div>
+		<div class="post-content">
+			<h2><%= f.title %></h2>
+			<div class="post-details">
+				<p class="post-date"><%= special_date(f.created_at) %>&nbsp;&nbsp;|&nbsp;&nbsp;</p>
+				<% unless f.category.nil? %>
+					<%= link_to "#{f.category.name}", :action => "show_categories", :id => f.category.name %>
+				<% end %>
+			</div>
+
+			<div class="post-text"> <%= f.post.html_safe %> </div>
+			
+			<% unless session[:admin_id] %>
+			<div class="post-admin-links">
+				<%= link_to "Edit This Post", edit_good_read_path(f.id) %>
+				<%= link_to "Delete This Post", { :action => "destroy", :id => f.id }, :confirm => 'Are you sure?', :method => :delete %>	
+			</div>
+
+		<% end %>
+	</div>
+	<div class="bottom"></div>
+	</div>
+	<% end %>
+	</div>
+
+<% end %>
+<div class="sidebar">
+	<%= render 'layouts/widgets' %>
+</div>

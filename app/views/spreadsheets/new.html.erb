@@ -1,0 +1,23 @@
+<h1>Spreadsheets#new</h1>
+<p>Find me in app/views/spreadsheets/new.html.erb</p>
+
+<% form_for @spreadsheet, :html => { :multipart => true } do |f| -%>
+	<%= render "shared/error_messages", :target => @spreadsheet %>
+	<%= f.label :csv_spreadsheet, "Spreadsheet" %><br>
+	<%= f.file_field :csv_spreadsheet %>
+
+	<%= f.label :table, "Affilitate", :value => :Affiliate %>
+	<%= f.radio_button :table, :Affiliate %><br>
+	<%= f.label :table, "Customer Detail", :value => :CustomerDetail %>
+	<%= f.radio_button :table, :CustomerDetail %><br>
+	<%= f.label :table, "Customer Summary", :value => :CustomerSummary %>
+	<%= f.radio_button :table, :CustomersSummary %><br>
+	<%= f.label :table, "Merchant Information", :value => :MerchantInformation %>
+	<%= f.radio_button :table, :MerchantInformation %><br>
+	<%= f.label :table, "Deal Detail", :value => :DealDetail %>
+	<%= f.radio_button :table, :DealDetail %><br>
+	<%= f.label :table, "Promotion", :value => :Promotion %>
+	<%= f.radio_button :table, :Promotion %><br><br>
+
+	<%= f.submit "Upload!", :disable_with => 'Uploading...' %>
+<% end -%>

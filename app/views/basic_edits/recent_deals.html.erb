@@ -1,0 +1,13 @@
+<div class="content-header">
+	<img class="page-header" src="/images/recent-deals-title.jpg"/>
+</div>
+<script src='https://www.dealcurrent.com/embed?publisherID=232'></script>
+<script>embedWidget({widget:'pastdeals',width:580,height:800})</script>
+
+
+<%= form_for @content, :url => :recent_deals_create do |f| -%>
+<%= render "shared/error_messages", :target => @content %>
+
+<%= f.submit "Save", :disable_with => 'Saving...' %>
+
+<% end -%>

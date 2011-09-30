@@ -1,0 +1,35 @@
+<div class="edit-page-wide">
+	<div class="topper"></div>
+	<div class="main-content">
+		<h2>Promotions Spreadsheets</h2>
+		<%= link_to "Upload", new_spreadsheet_path %>
+		<%= link_to "Back", spreadsheets_path() %>
+
+
+		<% if @spreadsheet.empty? %>
+			No data has been uploaded or your data has not yet been processed.
+		<% else %>
+		<div class="spreadsheet-table">
+			<table class="spreadsheet-viewer" cellspacing="15" cellpadding="5">
+				<tr>
+					<% @column_names.each do |f| %>
+						<th><%= f %></th>
+					<% end %>
+				</tr>
+				<% @spreadsheet.each do |f| %>
+						<tr>
+				        <% i = 0 %>
+				        <% until i >= @column_names.count %>
+				          <td><%= f.last[i] %></td>
+							
+				          <% i+=1 %>
+	        			<% end %>
+						</tr>
+				    <% end %>
+			</table>
+		</div>
+			
+		<% end %>
+	</div>
+	<div class="bottom"></div>
+</div>

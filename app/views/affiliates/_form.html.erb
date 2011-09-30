@@ -1,0 +1,52 @@
+<%= form_for(@affiliate) do |f| %>
+  <% if @affiliate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@affiliate.errors.count, "error") %> prohibited this affiliate from being saved:</h2>
+
+      <ul>
+      <% @affiliate.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	
+
+  <div class="actions">
+	<div class="left-side">
+		<%= f.label :entity_name, "Merchant Name" %>
+	   	<%= f.text_field :entity_name %>
+
+		<%= f.label :email, "Email" %>
+	   	<%= f.text_field :email %>
+
+		<%= f.label :address, "Address" %>
+	   	<%= f.text_field :address %>
+
+		<%= f.label :city, "City" %>
+	   	<%= f.text_field :city %>
+
+		<%= f.label :state, "State" %>
+	   	<%= f.text_field :state %>
+
+		<%= f.label :zip, "ZIP" %>
+	   	<%= f.text_field :zip %>
+	</div>
+	<div class="right-side">
+		<%= f.label :sales_price, "Sales Price" %>
+	   	<%= f.text_field :sales_price %>
+
+		<%= f.label :merchant, "Merchant Number" %>
+	   	<%= f.text_field :merchant %>
+
+		<%= f.label :number_sold, "Number Sold" %>
+	   	<%= f.text_field :number_sold %>
+
+		<%= f.label :total_revenue, "Total Revenue" %>
+	   	<%= f.text_field :total_revenue %>
+	</div>
+	
+    <%= f.submit %>
+  </div>
+<% end %>

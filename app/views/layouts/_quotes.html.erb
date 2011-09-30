@@ -1,0 +1,20 @@
+<% if @active_quotes.any? %>
+<div id="quote-container" class="hidden">
+	
+	<!-- <a href="#" id="quote-closer">×</a> -->
+	<div id="all-quotes">
+		<% @active_quotes.each do |f| %>
+			<div class="indiv-quote">
+				<p class="main-quote-text"><%= f.words_of_wisdom %></p>
+				<p class="main-quote-author"> - <%= f.author %></p>
+			</div>
+		<% end %>
+	</div>
+	
+	<div id="controls">
+		<a href="#" class="quote-left-btn prev"></a>
+		<a href="#" class="quote-right-btn next"></a>
+	</div>
+
+</div>
+<% end %>

@@ -1,0 +1,8 @@
+development:
+  access_key_id: AKIAJLQGMINWFQQUJ5HQ
+  secret_access_key: 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
+  bucket: bigblockdeals
+production:
+  access_key_id: AKIAJLQGMINWFQQUJ5HQ
+  secret_access_key: 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
+  bucket: bigblockdeals

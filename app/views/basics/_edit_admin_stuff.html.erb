@@ -1,0 +1,3 @@
+<% if session[:admin_id] %>
+	<%= link_to "Edit the #{@title} Page", {:controller => "basic_edits", :action => @action}, :class => "admin-edit-link" %>
+<% end %>

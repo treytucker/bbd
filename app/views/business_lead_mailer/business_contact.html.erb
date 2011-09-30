@@ -1,0 +1,18 @@
+<!DOCTYPE>
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<h1>Hey Paul,</h1><br></br>
+		<p><%= @contact.first_name %> <%= @contact.last_name %> wants to talk to you about their business <strong><%= @contact.company %></strong></p>
+		<p>Email: <%= @contact.email %></p><br></br>
+		<p>Phone Number: <%= @contact.phone %></p><br></br><br></br>
+		<p>Business Info: <%= @contact.company %></p><br></br>
+		<p><%= @website %></p>
+		<p><%= @contact.address %></p><br></br>
+		<p><%= @contact.city %>, <%= @contact.state %> <%= @contact.zip_code %></p><br></br>
+		<p>Their Message:</p><br></br>
+		<p><%= @contact.message %></p>
+	</body>
+</html>

@@ -1,0 +1,17 @@
+<!--
+	TODO Add in Edit Widgets on current page if widgets are acceptable
+-->
+
+<% if session[:admin_id] %>
+	<div id="admin_nav">
+		<div id="admin-nav-container">
+			<%= link_to "Manage BBD Blog", manage_bbd_blog_path %>
+			<%= link_to "See Admins", admins_path %>
+			<%= link_to "Manage Spreadsheets", spreadsheets_path %>
+			<%= link_to "Manage Widgets", widgets_path %>
+			<%= link_to "Manage Quotes", quotes_path() %>
+			<%= link_to "Manage Business Inquiries", admin_business_leads_path() %>
+			<%= link_to "Logout", logout_path %>
+		</div>
+	</div>
+<% end %>

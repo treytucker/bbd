@@ -1,0 +1,15 @@
+<div class="content-header">
+	<img class="page-header" src="/images/feature-your-business-title.jpg"/>
+</div>
+<div class="for-business-main">
+
+<%= form_for @content, :url => :for_businesses_create do |f| -%>
+<%= render "shared/error_messages", :target => @content %>
+
+<%= f.text_field :header, :class => "edit-input" %><br>
+<%= f.text_area :content %><br>
+
+<%= f.submit "Save", :disable_with => 'Saving...', :class => "edit-submit" %>
+
+<% end -%>
+</div>

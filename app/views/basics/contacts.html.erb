@@ -1,0 +1,23 @@
+<div class="content-header">
+	<img class="page-header" src="/images/contact-title.png"/>
+</div>
+<div class="contact-address-box">
+	<div class="contact-left-side">
+		<h2><%= @content.header_1 %></h2>
+		<%= mail_to @content.link_1 %>
+	</div>
+	<div class="contact-right-side">
+		<h2><%= @content.header_2 %></h2>
+		<%= mail_to @content.link_2 %>
+	</div>
+</div>
+<div class="bottom-contact-info cafeta">
+	<img src="/images/call-us-graphic.png">
+	<p><%= @content.number %> (office)</p>
+	<p><%= @content.address_name %><br>
+	<%= @content.address_street %><br>
+	<%= @content.city %>, <%= @content.state %> <%= @content.zip_code %></p>
+</div>
+
+<!-- admin Stuffs -->
+<%= render :partial => 'basics/edit_admin_stuff' %>

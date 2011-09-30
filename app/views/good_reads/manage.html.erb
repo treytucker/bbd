@@ -1,0 +1,33 @@
+<div class="edit-page-wide">
+	<div class="topper"></div>
+	<div class="main-content">
+		<h2>Manage BBD Blog</h2>
+		<%= link_to "New Blog Post", new_good_read_path, :class => 'full-width-clearer' %>
+		<div id="blog-post-previews">
+			<h2 class="full-width-clearer">Blog Posts</h2>
+			<% if @posts.empty? %>
+				<p>No Posts. Please create a new one. </p>
+			<% else %>
+				<% @posts.each do |f| %>
+				<div class="post-handle">
+					<h2><%= f.title %></h2>
+					<%= link_to "Edit This Post", edit_good_read_path(f.id) %><br><br>
+					<%= link_to "Delete This Post", { :action => "destroy", :id => f.id }, :confirm => 'Are you sure?', :method => :delete %>
+				</div>
+				<% end %>
+			<% end %>
+		</div>
+		<div id="category-previews">
+			<h2>Blog Categories</h2>
+			<%= link_to "New category", new_category_path, :class => "full-width-clearer" %>
+			<% @categories.each do |c| %>
+				<div class="indiv-category-preview full-width-clearer">
+					<h2><%= c.name %></h2>
+					<%= link_to "Edit", edit_category_path(c.id) %> 
+					<%= link_to "Delete", { :action => "destroy", :id => c.id }, :confirm => 'Are you sure?', :method => :delete %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="bottom"></div>
+</div>

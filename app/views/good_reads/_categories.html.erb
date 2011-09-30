@@ -1,0 +1,19 @@
+<!-- Trey don't laugh.... I just did this really quick so it'd be readable -->
+
+	<div class="indiv-widget blog-categories">
+		<div class="widget-topper"></div>
+		<div class="widget-content">
+			<% if @categories.nil? %>
+				<h3>NO CATEGORIES YO!</h3>
+			<% else %>
+				<h3></h3>
+				<% @categories.each do |f| %>
+					<%= link_to "#{f.name}", :action => "show_categories", :id => f.name %><br>
+				<% end %>
+			<% end %>
+			<% if session[:admin_id] %>
+				<br><%= link_to "Manage Categories", categories_path %>
+			<% end %>
+		</div>
+		<div class="widget-bottom"></div>
+	</div>

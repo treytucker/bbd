@@ -1,0 +1,11 @@
+<!--
+	TODO Edit to only edit the widgets
+	
+-->
+<script src='https://www.dealcurrent.com/embed?publisherID=232'></script><script>embedWidget({widget:'largewidget',width:600,height:1000})</script>
+<%= form_for @content, :url => :current_deals_create do |f| -%>
+<%= render "shared/error_messages", :target => @content %>
+
+<%= f.submit "Save", :disable_with => 'Saving...' %>
+
+<% end -%>

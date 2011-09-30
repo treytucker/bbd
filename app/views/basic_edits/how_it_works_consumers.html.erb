@@ -1,0 +1,37 @@
+<div class="content-header">
+	<img class="page-header" src="/images/how-it-works-title.jpg"/>
+	<div class="how-it-works-nav">
+		<a class="consumers consumer-active"></a>
+		<%= link_to	'', :how_it_works_businesses, :class => "businesses" %>
+	</div>
+</div>
+<div class="hiw-content">
+	<img id="hiw-consumer-graphic" src="/images/how-it-works_consumer.jpg"/>
+<%= form_for @content, :url => :how_it_works_consumers_create do |f| -%>
+<%= render "shared/error_messages", :target => @content %>
+	<div class="hiw-consumer-text">
+		<h2><%= f.text_field :header_1, :class => "edit-input" %></h2>
+		<%= f.label :content_1, "Content_1" %>
+		<%= f.text_area :content_1, :class => 'mceEditor' %>
+	</div>
+	<div class="hiw-consumer-text">
+		<h2><%= f.text_field :header_2, :class => "edit-input" %></h2>
+		<%= f.label :content_2, "Content_2" %>
+		<%= f.text_area :content_2, :class => 'mceEditor' %>
+	</div>
+	<div class="hiw-consumer-text">
+		<h2><%= f.text_field :header_3, :class => "edit-input" %></h2>
+		<%= f.label :content_3, "Content_3" %>
+		<%= f.text_area :content_3, :class => 'mceEditor' %>
+	</div>
+	<div class="hiw-consumer-text">
+		<h2><%= f.text_field :header_4, :class => "edit-input" %></h2>
+		<%= f.label :content_4, "Content_4" %>
+		<%= f.text_area :content_4, :class => 'mceEditor' %>
+	</div>
+<%= f.submit "Save", :disable_with => 'Saving...', :class => "edit-submit" %>
+
+<% end -%>
+
+	
+</div>

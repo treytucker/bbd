@@ -1,0 +1,2 @@
+class UserWidgetsController < ApplicationController
+end

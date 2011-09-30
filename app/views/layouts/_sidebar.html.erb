@@ -1,0 +1,13 @@
+<div class="sidebar">
+	<% if @page == "good_read" %>
+		<%= render 'good_reads/categories' %>
+		<%= render 'good_reads/dates' %>
+	<% end %>
+	
+	<% if @layout == "three-fourths" %>	  
+		<%= render 'layouts/widgets' %>
+	<% end %>
+</div>
+
+
+

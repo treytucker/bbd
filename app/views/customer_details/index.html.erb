@@ -1,0 +1,48 @@
+<div class="edit-page-wide">
+	<div class="topper"></div>
+	<div class="main-content">
+		<h2>Customer Details</h2>
+		
+		<div class="full-width-clearer">
+			<% form_for :csv_import, :url=> { :controller => "customer_details", :action => "csv_import"}, :html => { :multipart => true } do |f| %>
+			      <label for="dump_file">
+			        Select a CSV File :
+			      </label>
+			       <%= f.file_field :csv %>
+			       <%= submit_tag 'Submit' %>
+			<% end -%>			
+		</div>
+			<%= link_to 'New Customer detail', new_customer_detail_path, :class => 'full-width-clearer' %>
+
+<div class="affiliate-list">
+	<table>
+		<tr class="spreadsheet-titles">
+			<td>Customer Name</td><td>Email</td><td>Address</td><td>city</td><td>State</td><td>ZIP</td><td>Gender</td><td>Home Owner</td><td>Interests</td><td>Deal Name</td><td>Date of Purchase</td><td>Sale Price</td><td>Industry</td><td>Associated Affiliate</td>
+		</tr>				
+		<% @customer_details.each do |a| %>
+			<tr>
+				<td><%= a.name %></td>
+				<td><%= a.email %></td>
+				<td><%= a.address %></td>
+				<td><%= a.city %></td>
+				<td><%= a.state %></td>
+				<td><%= a.zip %></td>
+				<td><%= a.gender %></td>
+				<td><%= a.home_owner %></td>
+				<td><%= a.interests %></td>
+				<td><%= a.deal_name %></td>
+				<td><%= a.date_of_purchase %></td>
+				<td>$<%= a.sale_price %></td>
+				<td><%= a.industry %></td>
+				<td><%= a.affiliate_enitity_name %></td>
+				<td><%= link_to "Edit", edit_customer_detail_path(a.id) %></td>
+				<td><%= link_to "Delete", { :action => "destroy", :id => a.id }, :confirm => 'Are you sure?', :method => :delete %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+		
+		
+	</div>
+	<div class="bottom"></div>
+</div>

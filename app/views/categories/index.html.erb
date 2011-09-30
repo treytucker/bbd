@@ -1,0 +1,22 @@
+<div class="edit-page">
+	<div class="topper"></div>
+	<div class="main-content">
+			<h2>All the categories</h2>
+			<% if @categories.nil? %>
+				<p>there are no categories...</p><%= link_to "Add One", new_category_path %>
+			<% else %>
+			  <% @categories.each do |f| %>
+				<div class="full-width-clearer">
+					<p class="full-width-clearer"><%= f.name %></p>
+					<%= link_to "Edit", edit_category_path(f.id) %> 
+					<%= link_to "Delete", { :action => "destroy", :id => f.id }, :confirm => 'Are you sure?', :method => :delete %></p>					
+				</div>
+			  <% end %>
+			<% end %>
+
+			<%= link_to "New category", new_category_path %><br>
+			<%= link_to "Back to Good Reads", good_reads_path() %>	
+		</div>
+	</div>
+	<div class="bottom"></div>
+</div>

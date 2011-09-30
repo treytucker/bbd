@@ -1,0 +1,2 @@
+module BusinessInquiriesHelper
+end

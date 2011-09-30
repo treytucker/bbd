@@ -1,0 +1,53 @@
+<div class="edit-page-wide">
+	<div class="topper"></div>
+	<div class="main-content">
+		<h2>All the Business Leads</h2>
+			<% @leads.each do |f| %>
+			<div class="indiv-bus-lead">
+					<h2 class="semi-bold-item full-width-clearer"><%= f.company %></h2>
+					<p class="full-width-clearer semi-bold-item"><%= f.website %></p>
+					<div class="left-side-box">
+						<p><%= f.first_name %> <%= f.last_name %></p>
+						<%= mail_to f.email , f.email, :subject => "Your Big Block Deals Inquiry", :class => "full-width-clearer" %>
+						<p class="full-width-clearer"><%= f.phone %></p>
+						<div class="full-width-clearer">
+							<p class="full-width-clearer"><%= f.address %></p>
+							<p><%= f.city %>, <%= f.state %> <%= f.zip_code %></p>
+						</div>
+					</div>
+					<div class="right-side-box">
+						<p><%= f.message %></p>
+					</div>
+					<div class="far-right-box">
+						<p>Send email to:</p>
+						<%= mail_to f.email , f.email, :subject => "Your Big Block Deals Inquiry", :class => "full-width-clearer" %>
+					</div>
+					<div class="full-width-clearer">
+						<!-- <%= link_to "Show!", admin_business_lead_path(f.id) %> -->
+						<%= link_to "Delete Forever", :controller => "business_leads", :action => "destroy", :id => f.id %>
+
+					</div>		
+			</div>
+		
+			<!-- <tr>
+				<td><%= f.first_name %></td>
+				<td><%= f.last_name %></td>
+				<td><%= f.email %></td>
+				<td><%= f.phone %></td>
+				<td><%= f.company %></td>
+				<td><%= f.website %></td>
+				<td><%= f.address %></td>
+				<td><%= f.city %></td>
+				<td><%= f.state %></td>
+				<td><%= f.zip_code %></td>
+				<td><%= f.message %></td>
+				<td><%= f.created_at %></td>
+				<td><%= link_to "Show!", admin_business_lead_path(f.id) %></td>
+				<td><%= link_to "Delete FOREVER!", :controller => "business_leads", :action => "destroy", :id => f.id %> </td>
+			</tr> -->
+			<% end %>
+
+	</div>
+	<div class="bottom"></div>
+</div>
+

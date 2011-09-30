@@ -1,0 +1,30 @@
+<div class="content-header">
+	<img class="page-header" src="/images/how-it-works-title.jpg"/>
+	<div class="how-it-works-nav">
+		<a class="consumers consumer-active"></a>
+		<%= link_to	'', :how_it_works_businesses, :class => "businesses" %>
+	</div>
+</div>
+<div class="hiw-content">
+	<img id="hiw-consumer-graphic" src="/images/how-it-works_consumer.jpg"/>
+	<div class="hiw-consumer-text">
+		<h2><%= @content.header_1 %></h2>
+		<span><%= @content.content_1.html_safe %></span>
+	</div>
+	<div class="hiw-consumer-text">
+		<h2><%= @content.header_2 %></h2>
+		<span><%= @content.content_2.html_safe %></span>
+	</div>
+	<div class="hiw-consumer-text">
+		<h2><%= @content.header_3 %></h2>
+		<span><%= @content.content_3.html_safe %></span>
+	</div>
+	<div class="hiw-consumer-text">
+		<h2><%= @content.header_4 %></h2>
+		<span><%= @content.content_4.html_safe %></span>
+	</div>
+	
+</div>
+
+<!-- admin Stuffs -->
+<%= render :partial => 'basics/edit_admin_stuff' %>

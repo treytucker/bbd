@@ -1,0 +1,47 @@
+Blogs
+	Show[:id]
+	Index[:pull all]
+	Edit[:off of show] - Administration
+	New[:new blog] - Administration
+
+Deals
+	Recent Deals - iFrame
+	Deal of today - iFrame
+
+Basics
+	Privacy Policy
+	Terms of Service
+	About Us
+	Contact
+	HowitWorks
+		Consumers - Static
+		businesses - Static
+	For Business
+		Model and ActionMailer
+		
+Administration
+	Index
+		Upload and manage data
+		Edit Page content
+		Contacts
+		Manage Blog
+		Manage Widgets
+		Manage Quotes
+		
+Widget
+	Index
+	Show
+	Edit
+	Update
+	New
+	Delete
+	Create
+
+Quote
+	Index
+	Show
+	Edit
+	Update
+	New
+	Delete
+	Create
